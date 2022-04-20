@@ -1,0 +1,86 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}Votre matos audio{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>Todo :</h2>
+
+        <hr />
+
+        <ul>
+            <li>
+                Entités :
+                <ul>
+                    <li>
+                        Gestion du Matos :
+                        <ul>
+                            <li>catégorie</li>
+                            <li>marque</li>
+                            <li>modèle</li>
+                            <li>uri</li>
+                            <li>image</li>
+                            <li>année</li>
+                            <li>date achat</li>
+                            <li>facture</li>
+                            <li>état (achat)</li>
+                            <li>état (actuel)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Catégories de Matos :
+                        <ul>
+                            <li>parent</li>
+                            <li>
+                                nom :
+                                <ul>
+                                    <li>consoles</li>
+                                    <li>enceintes</li>
+                                    <li>micros & DI</li>
+                                    <li>câbles</li>
+                                    <li>filtres & effets</li>
+                                    <li>pieds de micros</li>
+                                    <li>consommables</li>
+                                </ul>
+                            </li>
+                            <li>uri</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Etat du Matos :
+                        <ul>
+                            <li>
+                                libelle :
+                                <ul>
+                                    <li>neuf</li>
+                                    <li>bon</li>
+                                    <li>abîmé</li>
+                                    <li>à prévoir</li>
+                                </ul>
+                            </li>
+                            <li>uri</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <hr />
+
+        <ul>
+            <li>
+                Fonctionnalités :
+                <ul>
+                    <li>
+                        Sélection pour un évènement :
+                        <ul>
+                            <li>Selon dispo</li>
+                            <li>Selon état</li>
+                            <li>Selon quantité</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+{% endblock %}

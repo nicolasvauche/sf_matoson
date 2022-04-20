@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header class="app-header">
+        <a href="{{ path('app_home') }}" title="Retour à l'accueil">
+            <img src="{{ asset('img/logo-matoson.png') }}" alt="Matoson" />
+            <div class="brandname">
+                <p>Matoson</p>
+                <h1>{% block title %}{% endblock %}</h1>
+            </div>
+        </a>
+
+        <div class="actions">
+            {% if app.request.get('_route') == 'app_home' %}
+                <a href="#" title="Connectez-vous" class="app-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+            {% else %}
+                <a href="#" title="Votre compte" class="app-account">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="#" title="Déconnectez-vous" class="app-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            {% endif %}
+        </div>
+    </header>
+
+
+    <nav class="app-navigation">
+        <a href="{{ path('app_home') }}" title="Retour à l'accueil" {% if app.request.get('_route') == 'app_home' %}class="active"{% endif %}>
+            <img src="{{ asset('img/logo-matoson.png') }}" alt="Accueil" />
+            Accueil
+        </a>
+
+        <a href="{{ path('matos') }}" title="Gérer le Matos" {% if app.request.get('_route') == 'matos' %}class="active"{% endif %}>
+            <i class="fas fa-microphone-alt"></i>
+            Matos
+        </a>
+
+        <a href="{{ path('category') }}" title="Catégories de Matos" {% if app.request.get('_route') == 'category' %}class="active"{% endif %}>
+            <i class="fas fa-box"></i>
+            Armoire
+        </a>
+
+        <a href="{{ path('health') }}" title="État du Matos" {% if app.request.get('_route') == 'health' %}class="active"{% endif %}>
+            <i class="fas fa-battery-half"></i>
+            État
+        </a>
+
+        <a href="{{ path('stage') }}" title="Préparer le Matos pour un évènement" {% if app.request.get('_route') == 'stage' %}class="active"{% endif %}>
+            <i class="fab fa-line"></i>
+            Stage
+        </a>
+    </nav>
+
+    <main class="app-main">
+        {% block main %}{% endblock %}
+    </main>
+{% endblock %}

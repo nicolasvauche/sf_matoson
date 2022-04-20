@@ -1,0 +1,10 @@
+html {
+    scroll-behavior: smooth;
+
+    body {
+        line-height: 1.25rem;
+        font-family: $font-family-primary;
+        color: $color-black;
+        background-color: $color-white;
+    }
+}

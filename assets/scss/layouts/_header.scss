@@ -1,0 +1,79 @@
+.app-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: $color-fourth;
+    box-shadow: 3px 3px 6px rgba($color-black, 0.5), -3px -3px 6px $color-white;
+
+    @include respond(md) {
+        position: initial;
+        top: initial;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        @include respond(md) {
+            justify-content: center;
+        }
+
+        img {
+            margin-right: 0.5rem;
+            height: 2rem;
+
+            @include respond(md) {
+                display: none;
+            }
+        }
+
+        .brandname {
+            text-align: center;
+
+            p {
+                font-size: 0.75rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                text-align: right;
+                color: $color-primary;
+            }
+
+            h1 {
+                color: $color-secondary;
+            }
+        }
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        align-self: flex-start;
+        grid-gap: 0.5rem;
+        padding: 1px 0.5rem 0 0;
+
+        a {
+            color: inherit;
+
+            &.app-login {
+                color: $color-secondary;
+            }
+
+            &.app-logout {
+                i {
+                    color: $color-primary;
+                }
+            }
+
+            &.app-account {
+                i {
+                    color: $color-secondary;
+                }
+            }
+        }
+    }
+}
