@@ -5,10 +5,47 @@ h1 {
 }
 
 h2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
     font-family: $font-family-secondary;
     font-size: 1.25rem;
     font-weight: bold;
     color: $color-secondary;
+    border-bottom: 3px solid $color-third;
+
+    a,
+    button {
+        padding: 0;
+        font-size: 1rem;
+        background: none;
+        border: none;
+        color: inherit;
+
+        i {
+            &.fa-arrow-circle-left,
+            &.fa-plus-circle {
+                color: $color-third;
+            }
+
+            &.fa-edit,
+            &.fa-eye {
+                color: $color-secondary;
+            }
+
+            &.fa-trash {
+                color: $color-red;
+            }
+        }
+    }
+}
+
+h3 {
+    font-family: $font-family-secondary;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 hr {
@@ -20,6 +57,10 @@ ul {
     margin-left: 1rem;
     padding-left: 1rem;
     list-style: initial;
+}
+
+p {
+    font-size: 0.8rem;
 }
 
 a {

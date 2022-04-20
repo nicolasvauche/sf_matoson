@@ -1,0 +1,16 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}Armoire à matos{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>
+            Toutes les catégories
+            <a href="{{ path('category.new') }}">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+        </h2>
+
+        {% include 'category/_grid.html.twig' %}
+    </section>
+{% endblock %}

@@ -23,4 +23,11 @@
 .idea/
 .vscode/
 .DS_Store
+.sass-cache/
+public/img/category/*
+!public/img/category/placeholder.png
+public/img/health/*
+!public/img/health/placeholder.png
+public/img/equipment/*
+!public/img/equipment/placeholder.png
 ###< custom/default ###

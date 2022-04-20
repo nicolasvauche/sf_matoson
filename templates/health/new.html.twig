@@ -1,0 +1,16 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}État du matos{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>
+            <a href="{{ path('health') }}">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            Créer un état
+        </h2>
+
+        {{ include('health/_form.html.twig') }}
+    </section>
+{% endblock %}

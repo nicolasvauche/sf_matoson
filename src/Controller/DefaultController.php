@@ -10,8 +10,6 @@ class DefaultController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
     #[Route('/matos', name: 'matos')]
-    #[Route('/categories', name: 'category')]
-    #[Route('/etat', name: 'health')]
     #[Route('/stage', name: 'stage')]
     public function index(): Response
     {

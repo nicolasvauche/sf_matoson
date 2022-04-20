@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('health.delete', {'id': health.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet état ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ health.id) }}">
+    <button class="btn">
+        <i class="fas fa-trash"></i>
+    </button>
+</form>

@@ -1,0 +1,20 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}Armoire à matos{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>
+            <a href="{{ path('category') }}">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            Catégorie : {{ category.name }}
+            <a href="{{ path('category.show', {'slug': category.slug}) }}">
+                <i class="fas fa-eye"></i>
+            </a>
+            {{ include('category/_delete_form.html.twig') }}
+        </h2>
+
+        {{ include('category/_form.html.twig', {'button_label': 'Modifier'}) }}
+    </section>
+{% endblock %}

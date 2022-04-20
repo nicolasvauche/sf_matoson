@@ -1,0 +1,30 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}Armoire à matos{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>
+            <a href="{{ path('category') }}">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            Catégorie : {{ category.name }}
+            <a href="{{ path('category.edit', {'slug': category.slug}) }}">
+                <i class="fas fa-edit"></i>
+            </a>
+            {{ include('category/_delete_form.html.twig') }}
+        </h2>
+
+        <div class="infos">
+            {% if category.image %}
+                <img src="{{ asset('img/category/' ~ category.image) }}" class="grid-item-image" alt="{{ category.name }}">
+            {% else %}
+                <img src="{{ asset('img/category/placeholder.png') }}" class="grid-item-image" alt="{{ category.name }}">
+            {% endif %}
+
+            <h3>{{ category.name }}</h3>
+
+            <p>{{ category.equipment | length }} matos</p>
+        </div>
+    </section>
+{% endblock %}

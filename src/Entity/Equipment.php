@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EquipmentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: EquipmentRepository::class)]
 class Equipment
@@ -17,6 +18,7 @@ class Equipment
     private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Gedmo\Slug(fields: ['name'])]
     private $slug;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]

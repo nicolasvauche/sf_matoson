@@ -1,0 +1,16 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}État du matos{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>
+            Tous les états
+            <a href="{{ path('health.new') }}">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+        </h2>
+
+        {% include 'health/_grid.html.twig' %}
+    </section>
+{% endblock %}

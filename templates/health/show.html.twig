@@ -1,0 +1,30 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}État du matos{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>
+            <a href="{{ path('health') }}">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            État : {{ health.name }}
+            <a href="{{ path('health.edit', {'slug': health.slug}) }}">
+                <i class="fas fa-edit"></i>
+            </a>
+            {{ include('health/_delete_form.html.twig') }}
+        </h2>
+
+        <div class="infos">
+            {% if health.image %}
+                <img src="{{ asset('img/health/' ~ health.image) }}" class="grid-item-image" alt="{{ health.name }}">
+            {% else %}
+                <img src="{{ asset('img/health/placeholder.png') }}" class="grid-item-image" alt="{{ health.name }}">
+            {% endif %}
+
+            <h3>{{ health.name }}</h3>
+
+            <p>{{ health.equipment | length }} matos</p>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}État du matos{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>
+            <a href="{{ path('health') }}">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            État : {{ health.name }}
+            <a href="{{ path('health.show', {'slug': health.slug}) }}">
+                <i class="fas fa-eye"></i>
+            </a>
+            {{ include('health/_delete_form.html.twig') }}
+        </h2>
+
+        {{ include('health/_form.html.twig', {'button_label': 'Modifier'}) }}
+    </section>
+{% endblock %}

@@ -1,0 +1,36 @@
+<div class="app-grid">
+    {% for category in categories %}
+        <div class="grid-item">
+            <a href="{{ path('category.show', {'slug': category.slug}) }}">
+                {% if category.image %}
+                    <img src="{{ asset('img/category/' ~ category.image) }}" class="grid-item-image" alt="{{ category.name }}">
+                {% else %}
+                    <img src="{{ asset('img/category/placeholder.png') }}" class="grid-item-image" alt="{{ category.name }}">
+                {% endif %}
+                <h3 class="grid-item-title">
+                    {{ category.name }}
+                </h3>
+                <p class="grid-item-textinfo">
+                    {{ category.equipment | length }} matos
+                </p>
+            </a>
+            <div class="grid-item-actions">
+                <a href="{{ path('category.edit', {'slug': category.slug}) }}">
+                    <i class="fas fa-edit"></i>
+                </a>
+                {{ include('category/_delete_form.html.twig') }}
+            </div>
+        </div>
+    {% else %}
+        <div class="grid-item">
+            <p class="grid-item-none">
+                Aucune catégorie :(
+            </p>
+            <div class="grid-item-actions">
+                <a href="{{ path('category.new') }}">
+                    <i class="fas fa-plus-circle"></i>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
