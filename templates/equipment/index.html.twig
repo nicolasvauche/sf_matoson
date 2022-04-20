@@ -1,16 +1,16 @@
 {% extends '_layouts/_default.html.twig' %}
 
-{% block title %}Armoire à matos{% endblock %}
+{% block title %}Le matos{% endblock %}
 
 {% block main %}
     <section>
         <h2>
-            <span>Toutes les catégories</span>
-            <a href="{{ path('category.new') }}">
+            <span>Tout le matos</span>
+            <a href="{{ path('equipment.new') }}">
                 <i class="fas fa-plus-circle"></i>
             </a>
         </h2>
 
-        {% include 'category/_grid.html.twig' %}
+        {% include 'equipment/_grid.html.twig' %}
     </section>
 {% endblock %}

@@ -12,8 +12,8 @@ class HealthFixtures extends Fixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $health = new Health();
-        $health->setName('Bon')
-            ->setImage('bon.png');
+        $health->setName('Bon état')
+            ->setImage('bon-etat.png');
         $manager->persist($health);
         $this->setReference('healthBon', $health);
 

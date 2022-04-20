@@ -1,0 +1,50 @@
+{% extends '_layouts/_default.html.twig' %}
+
+{% block title %}Le matos{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>
+            <a href="{{ path('equipment') }}">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            <span>Fiche Matos</span>
+            <a href="{{ path('equipment.edit', {'slug': equipment.slug}) }}">
+                <i class="fas fa-edit"></i>
+            </a>
+            {{ include('equipment/_delete_form.html.twig') }}
+        </h2>
+
+        <div class="infos">
+            {% if equipment.image %}
+                <img src="{{ asset('img/equipment/' ~ equipment.image) }}" class="grid-item-image" alt="{{ equipment.name }}">
+            {% else %}
+                <img src="{{ asset('img/equipment/placeholder.png') }}" class="grid-item-image" alt="{{ equipment.name }}">
+            {% endif %}
+
+            <h3>{{ equipment.name }}</h3>
+
+            <p>{{ equipment.category.name }}</p>
+
+            <hr />
+
+            {% if equipment.bill %}
+                <p>
+                    <a href="{{ path('equipment.download.bill', {'filename': equipment.bill}) }}" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i>
+                        Télécharger la facture
+                    </a>
+                </p>
+            {% endif %}
+
+            {% if equipment.purchasedAt %}
+                <p>Acquis le {{ equipment.purchasedAt | date }}</p>
+            {% endif %}
+
+            <p class="health">
+                <img src="{{ asset('img/health/' ~ equipment.health.image) }}" class="app-icon" alt="{{ equipment.health.name }}" />
+                {{ equipment.health.name }}
+            </p>
+        </div>
+    </section>
+{% endblock %}

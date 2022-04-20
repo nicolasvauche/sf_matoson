@@ -8,7 +8,7 @@
             <a href="{{ path('health') }}">
                 <i class="fas fa-arrow-circle-left"></i>
             </a>
-            État : {{ health.name }}
+            <span>État : {{ health.name }}</span>
             <a href="{{ path('health.edit', {'slug': health.slug}) }}">
                 <i class="fas fa-edit"></i>
             </a>
@@ -25,6 +25,12 @@
             <h3>{{ health.name }}</h3>
 
             <p>{{ health.equipment | length }} matos</p>
+
+            {% if health.equipment | length > 0 %}
+                <hr />
+
+                {% include 'equipment/_grid.html.twig' with {'equipments': health.equipment} %}
+            {% endif %}
         </div>
     </section>
 {% endblock %}

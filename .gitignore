@@ -30,4 +30,6 @@ public/img/health/*
 !public/img/health/placeholder.png
 public/img/equipment/*
 !public/img/equipment/placeholder.png
+public/bill/*
+!public/bill/.gitignore
 ###< custom/default ###

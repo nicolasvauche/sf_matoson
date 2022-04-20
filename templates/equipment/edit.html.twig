@@ -1,0 +1,20 @@
+{% extends '_layouts/_default.html.twig' %}
+
+{% block title %}Le matos{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>
+            <a href="{{ path('equipment') }}">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            <span>Modifier une fiche Matos</span>
+            <a href="{{ path('equipment.show', {'slug': equipment.slug}) }}">
+                <i class="fas fa-eye"></i>
+            </a>
+            {{ include('equipment/_delete_form.html.twig') }}
+        </h2>
+
+        {{ include('equipment/_form.html.twig', {'button_label': 'Modifier'}) }}
+    </section>
+{% endblock %}

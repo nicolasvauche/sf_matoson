@@ -68,7 +68,6 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $categoryImageFile */
             $categoryImageFile = $form->get('image')->getData();
-
             if ($categoryImageFile) {
                 if ($category->getImage()) {
                     $fileUploader->delete($this->getParameter('images_category'), $category->getImage());

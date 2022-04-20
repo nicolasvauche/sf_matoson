@@ -33,7 +33,7 @@
             Accueil
         </a>
 
-        <a href="{{ path('matos') }}" title="Gérer le Matos" {% if app.request.get('_route') == 'matos' %}class="active"{% endif %}>
+        <a href="{{ path('equipment') }}" title="Gérer le Matos" {% if 'equipment' in app.request.get('_route') %}class="active"{% endif %}>
             <i class="fas fa-microphone-alt"></i>
             Matos
         </a>

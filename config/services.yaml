@@ -8,6 +8,7 @@ parameters:
     images_category: '%kernel.project_dir%/public/img/category'
     images_health: '%kernel.project_dir%/public/img/health'
     images_equipment: '%kernel.project_dir%/public/img/equipment'
+    images_bill: '%kernel.project_dir%/public/bill'
 
 services:
     # default configuration for services in *this* file

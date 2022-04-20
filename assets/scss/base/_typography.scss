@@ -16,15 +16,32 @@ h2 {
     color: $color-secondary;
     border-bottom: 3px solid $color-third;
 
+    span {
+        display: block;
+        margin-right: auto;
+    }
+
     a,
     button {
+        margin: 0 0.5rem;
         padding: 0;
         font-size: 1rem;
         background: none;
         border: none;
         color: inherit;
+        cursor: pointer;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
 
         i {
+            font-size: 1.25rem;
+
             &.fa-arrow-circle-left,
             &.fa-plus-circle {
                 color: $color-third;
@@ -44,7 +61,7 @@ h2 {
 
 h3 {
     font-family: $font-family-secondary;
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: bold;
 }
 
@@ -60,9 +77,10 @@ ul {
 }
 
 p {
-    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 a {
     text-decoration: none;
+    color: $color-secondary;
 }
