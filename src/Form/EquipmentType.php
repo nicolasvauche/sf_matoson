@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -50,6 +51,18 @@ class EquipmentType extends AbstractType
                     ])
                 ],
             ])
+            ->add('description',
+                TextareaType::class,
+                [
+                    'label' => 'Description du matos',
+                    'required' => false,
+                    'attr' =>
+                        [
+                            'class' => 'form-control',
+                            'placeholder' => 'ex: à quoi ça sert, accessoires inclus, …',
+                            'rows' => 6,
+                        ],
+                ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
@@ -72,7 +85,7 @@ class EquipmentType extends AbstractType
             ])
             ->add('purchasedAt', DateType::class, [
                 'widget' => 'single_text',
-                'input'  => 'datetime',
+                'input' => 'datetime',
                 'label' => "Date d'acquisition du matos",
                 'required' => false,
                 'attr' =>
