@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('equipment.delete.bill', {'id': equipment.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer la facture de ce matos ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('deleteBill' ~ equipment.id) }}">
+    <button class="btn">
+        <i class="fas fa-trash"></i>
+    </button>
+</form>

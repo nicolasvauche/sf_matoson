@@ -6,7 +6,7 @@
                     {% if category.image %}
                         <img src="{{ asset('img/category/' ~ category.image) }}" class="grid-item-image" alt="{{ category.name }}">
                     {% else %}
-                        <img src="{{ asset('img/category/placeholder.png') }}" class="grid-item-image" alt="{{ category.name }}">
+                        <img src="{{ asset('img/category/_placeholder.png') }}" class="grid-item-image" alt="{{ category.name }}">
                     {% endif %}
                     <h3 class="grid-item-title">
                         {{ category.name }}

@@ -22,7 +22,7 @@
             {% if equipment.image %}
                 <img src="{{ asset('img/equipment/' ~ equipment.image) }}" class="grid-item-image" alt="{{ equipment.name }}">
             {% else %}
-                <img src="{{ asset('img/equipment/placeholder.png') }}" class="grid-item-image" alt="{{ equipment.name }}">
+                <img src="{{ asset('img/equipment/_placeholder.png') }}" class="grid-item-image" alt="{{ equipment.name }}">
             {% endif %}
 
             <h3>{{ equipment.name }}</h3>

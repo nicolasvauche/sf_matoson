@@ -1,8 +1,20 @@
 <div class="infos">
-    {% if equipment.image %}
-        <img src="{{ asset('img/equipment/' ~ equipment.image) }}" class="grid-item-image" alt="{{ equipment.name }}">
-    {% else %}
-        <img src="{{ asset('img/equipment/placeholder.png') }}" class="grid-item-image" alt="{{ equipment.name }}">
+    <figure>
+        {% if equipment.image %}
+            <img src="{{ asset('img/equipment/' ~ equipment.image) }}" class="grid-item-image" alt="{{ equipment.name }}" />
+            {{ include('equipment/_delete_image_form.html.twig') }}
+        {% else %}
+            <img src="{{ asset('img/equipment/_placeholder.png') }}" class="grid-item-image" alt="{{ equipment.name }}" />
+        {% endif %}
+    </figure>
+
+    {% if equipment.bill %}
+        <figure>
+            <a href="{{ path('equipment.download.bill', {'filename': equipment.bill}) }}" target="_blank" rel="noopener noreferrer">
+                <img src="{{ asset('bill/_placeholder.png') }}" class="grid-item-image" alt="{{ equipment.bill }}" />
+            </a>
+            {{ include('equipment/_delete_bill_form.html.twig') }}
+        </figure>
     {% endif %}
 
     {{ form_start(form, {'attr': {'class': 'app-form'}}) }}

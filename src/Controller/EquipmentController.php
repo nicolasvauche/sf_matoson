@@ -105,7 +105,7 @@ class EquipmentController extends AbstractController
     public function delete(Request $request, Equipment $equipment, EquipmentRepository $equipmentRepository, FileUploader $fileUploader): Response
     {
         if ($this->isCsrfTokenValid('delete' . $equipment->getId(), $request->request->get('_token'))) {
-            $isThereOthers = $equipmentRepository->findBy(['image' => $equipment->getImage()]);
+            $isThereOthers = $equipmentRepository->findBy(['image' => $equipment->getImage(), 'id' => '<>' . $equipment->getId()]);
             if (!$isThereOthers) {
                 $fileUploader->delete($this->getParameter('images_equipment'), $equipment->getImage());
             }
@@ -125,6 +125,36 @@ class EquipmentController extends AbstractController
         }
 
         return $this->redirectToRoute('equipment', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/supprimer-image/{id}', name: 'equipment.delete.image', methods: ['POST'])]
+    public function deleteImage(Request $request, Equipment $equipment, EquipmentRepository $equipmentRepository, FileUploader $fileUploader): Response
+    {
+        if ($this->isCsrfTokenValid('deleteImage' . $equipment->getId(), $request->request->get('_token'))) {
+            $isThereOthers = $equipmentRepository->findBy(['image' => $equipment->getImage(), 'id' => '<>' . $equipment->getId()]);
+            if (!$isThereOthers) {
+                $fileUploader->delete($this->getParameter('images_equipment'), $equipment->getImage());
+            }
+            $equipment->setImage(null);
+            $equipmentRepository->add($equipment);
+        }
+
+        return $this->redirectToRoute('equipment.show', ['id' => $equipment->getId(), 'slug' => $equipment->getSlug()], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/supprimer-facture/{id}', name: 'equipment.delete.bill', methods: ['POST'])]
+    public function deleteBill(Request $request, Equipment $equipment, EquipmentRepository $equipmentRepository, FileUploader $fileUploader): Response
+    {
+        if ($this->isCsrfTokenValid('deleteBill' . $equipment->getId(), $request->request->get('_token'))) {
+            $isThereOthers = $equipmentRepository->findBy(['bill' => $equipment->getBill(), 'id' => '<>' . $equipment->getId()]);
+            if (!$isThereOthers) {
+                $fileUploader->delete($this->getParameter('images_bill'), $equipment->getBill());
+            }
+            $equipment->setBill(null);
+            $equipmentRepository->add($equipment);
+        }
+
+        return $this->redirectToRoute('equipment.show', ['id' => $equipment->getId(), 'slug' => $equipment->getSlug()], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/telecharger/facture/{filename}', name: 'equipment.download.bill', methods: ['GET'])]

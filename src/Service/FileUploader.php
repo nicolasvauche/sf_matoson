@@ -2,9 +2,9 @@
 
 namespace App\Service;
 
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 class FileUploader
 {
@@ -24,11 +24,13 @@ class FileUploader
     public function delete($targetDirectory, $fileName)
     {
         if (!empty($fileName)) {
-            if (file_exists($targetDirectory . '/' . $fileName)) {
+            $filesystem = new Filesystem();
+
+            if ($filesystem->exists($targetDirectory . '/' . $fileName)) {
                 try {
-                    unlink($targetDirectory . '/' . $fileName);
+                    $filesystem->remove($targetDirectory . '/' . $fileName);
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
+                    var_dump($filesystem->exists($targetDirectory . '/' . $fileName));exit;
                 }
             }
         }
