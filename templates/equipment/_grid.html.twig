@@ -18,11 +18,13 @@
                 </a>
             </div>
             <div class="grid-item-actions">
-                <a href="{{ path('equipment.edit', {'id': equipment.id, 'slug': equipment.slug}) }}">
-                    <i class="fas fa-edit"></i>
-                </a>
-                {{ include('equipment/_duplicate_form.html.twig') }}
-                {{ include('equipment/_delete_form.html.twig') }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('equipment.edit', {'id': equipment.id, 'slug': equipment.slug}) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    {{ include('equipment/_duplicate_form.html.twig') }}
+                    {{ include('equipment/_delete_form.html.twig') }}
+                {% endif %}
             </div>
         </div>
     {% else %}

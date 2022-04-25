@@ -11,15 +11,11 @@
         </a>
 
         <div class="actions">
-            {% if app.request.get('_route') == 'app_home' %}
-                <a href="#" title="Connectez-vous" class="app-login">
-                    <i class="fas fa-sign-in-alt"></i>
-                </a>
-            {% else %}
-                <a href="#" title="Votre compte" class="app-account">
+            {% if app.request.get('_route') != 'app_login' %}
+                {#<a href="#" title="Votre compte" class="app-account">
                     <i class="fas fa-user"></i>
-                </a>
-                <a href="#" title="Déconnectez-vous" class="app-logout">
+                </a>#}
+                <a href="{{ path('app_logout') }}" title="Déconnectez-vous" class="app-logout">
                     <i class="fas fa-sign-out-alt"></i>
                 </a>
             {% endif %}

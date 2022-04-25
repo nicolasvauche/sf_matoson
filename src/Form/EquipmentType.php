@@ -27,6 +27,7 @@ class EquipmentType extends AbstractType
                     'required' => true,
                     'attr' =>
                         [
+                            'autofocus' => 'true',
                             'class' => 'form-control',
                             'placeholder' => 'ex: Shure SM57',
                         ],

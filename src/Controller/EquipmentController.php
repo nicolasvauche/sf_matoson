@@ -56,7 +56,7 @@ class EquipmentController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}-{slug}', name: 'equipment.show', methods: ['GET'])]
+    #[Route('/details/{id}-{slug}', name: 'equipment.show', methods: ['GET'])]
     public function show(Equipment $equipment): Response
     {
         return $this->render('equipment/show.html.twig', [

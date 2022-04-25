@@ -6,9 +6,11 @@
     <section>
         <h2>
             <span>Tout le matos ({{ equipments | length }})</span>
-            <a href="{{ path('equipment.new') }}">
-                <i class="fas fa-plus-circle"></i>
-            </a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('equipment.new') }}">
+                    <i class="fas fa-plus-circle"></i>
+                </a>
+            {% endif %}
         </h2>
 
         {% include 'equipment/_grid.html.twig' %}

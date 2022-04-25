@@ -4,67 +4,50 @@
 
 {% block main %}
     <section>
+        <h2>Stats :</h2>
+        <div class="app-grid">
+            <div class="grid-item">
+                <div class="grid-item-body">
+                    <img src="{{ asset('img/logo-matoson.png') }}" class="grid-item-image" />
+                    <h3 class="grid-item-title">
+                        <a href="{{ path('equipment') }}">
+                            {{ equipments | length }} matos
+                        </a>
+                        dans
+                        <a href="{{ path('category') }}">
+                            {{ categories | length }} catégorie{% if categories | length > 1 %}s{% endif %}
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            {% for health in healths %}
+                <div class="grid-item">
+                    <div class="grid-item-body">
+                        {% if loop.index is odd %}
+                            <img src="{{ asset('img/equipment/placeholder.png') }}" class="grid-item-image" />
+                        {% else %}
+                            <img src="{{ asset('img/logo-matoson.png') }}" class="grid-item-image" />
+                        {% endif %}
+                        <p class="mb-0">
+                            {{ health.equipment | length }} matos
+                            {% if health.slug == 'bon-etat' %}
+                                en
+                            {% endif %}
+                            <a href="{{ path('health.show', {'slug': health.slug}) }}" class="grid-item-title">
+                                {{ health.name | lower }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section>
         <h2>Todo :</h2>
-
         <ul>
             <li>
-                Entités :
-                <ul>
-                    <li>
-                        Gestion du Matos :
-                        <ul>
-                            <li>catégorie</li>
-                            <li>marque</li>
-                            <li>modèle</li>
-                            <li>uri</li>
-                            <li>image</li>
-                            <li>date achat</li>
-                            <li>facture</li>
-                            <li>état</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Catégories de Matos :
-                        <ul>
-                            <li>
-                                nom :
-                                <ul>
-                                    <li>consoles</li>
-                                    <li>enceintes</li>
-                                    <li>micros & DI</li>
-                                    <li>câbles</li>
-                                    <li>filtres & effets</li>
-                                    <li>pieds de micros</li>
-                                    <li>consommables</li>
-                                </ul>
-                            </li>
-                            <li>uri</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Etat du Matos :
-                        <ul>
-                            <li>
-                                libelle :
-                                <ul>
-                                    <li>neuf</li>
-                                    <li>bon</li>
-                                    <li>abîmé</li>
-                                    <li>à prévoir</li>
-                                </ul>
-                            </li>
-                            <li>uri</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <hr />
-
-        <ul>
-            <li>
-                Fonctionnalités :
+                Fonctionnalités Stage :
                 <ul>
                     <li>
                         Sélection pour un évènement :
@@ -72,6 +55,7 @@
                             <li>Selon dispo</li>
                             <li>Selon état</li>
                             <li>Selon quantité</li>
+                            <li>Selon prêts</li>
                         </ul>
                     </li>
                 </ul>

@@ -9,11 +9,13 @@
                 <i class="fas fa-arrow-circle-left"></i>
             </a>
             <span>Fiche Matos</span>
-            <a href="{{ path('equipment.edit', {'id': equipment.id, 'slug': equipment.slug}) }}">
-                <i class="fas fa-edit"></i>
-            </a>
-            {{ include('equipment/_duplicate_form.html.twig') }}
-            {{ include('equipment/_delete_form.html.twig') }}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('equipment.edit', {'id': equipment.id, 'slug': equipment.slug}) }}">
+                    <i class="fas fa-edit"></i>
+                </a>
+                {{ include('equipment/_duplicate_form.html.twig') }}
+                {{ include('equipment/_delete_form.html.twig') }}
+            {% endif %}
         </h2>
 
         <div class="infos">

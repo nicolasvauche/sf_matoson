@@ -9,10 +9,12 @@
                 <i class="fas fa-arrow-circle-left"></i>
             </a>
             <span>État : {{ health.name }}</span>
-            {#<a href="{{ path('health.edit', {'slug': health.slug}) }}">
-                <i class="fas fa-edit"></i>
-            </a>
-            {{ include('health/_delete_form.html.twig') }}#}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('health.edit', {'slug': health.slug}) }}">
+                    <i class="fas fa-edit"></i>
+                </a>
+                {{ include('health/_delete_form.html.twig') }}
+            {% endif %}
         </h2>
 
         <div class="infos">

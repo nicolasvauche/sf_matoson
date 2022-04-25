@@ -22,6 +22,7 @@ class HealthType extends AbstractType
                     'required' => true,
                     'attr' =>
                         [
+                            'autofocus' => 'true',
                             'class' => 'form-control',
                             'placeholder' => 'ex: Neuf',
                         ],

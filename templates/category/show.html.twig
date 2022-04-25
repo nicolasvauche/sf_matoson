@@ -9,10 +9,12 @@
                 <i class="fas fa-arrow-circle-left"></i>
             </a>
             <span>Catégorie : {{ category.name }}</span>
-            {#<a href="{{ path('category.edit', {'slug': category.slug}) }}">
-                <i class="fas fa-edit"></i>
-            </a>
-            {{ include('category/_delete_form.html.twig') }}#}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('category.edit', {'slug': category.slug}) }}">
+                    <i class="fas fa-edit"></i>
+                </a>
+                {{ include('category/_delete_form.html.twig') }}
+            {% endif %}
         </h2>
 
         <div class="infos">

@@ -6,9 +6,11 @@
     <section>
         <h2>
             <span>Tous les états</span>
-            {#<a href="{{ path('health.new') }}">
-                <i class="fas fa-plus-circle"></i>
-            </a>#}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('health.new') }}">
+                    <i class="fas fa-plus-circle"></i>
+                </a>
+            {% endif %}
         </h2>
 
         {% include 'health/_grid.html.twig' %}

@@ -22,6 +22,7 @@ class CategoryType extends AbstractType
                     'required' => true,
                     'attr' =>
                         [
+                            'autofocus' => 'true',
                             'class' => 'form-control',
                             'placeholder' => 'ex: Consoles',
                         ],
