@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\EquipmentRepository;
 use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -17,10 +18,11 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class CategoryController extends AbstractController
 {
     #[Route('/', name: 'category', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository, EquipmentRepository $equipmentRepository): Response
     {
         return $this->render('category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
+            'equipmentRepository' => $equipmentRepository,
         ]);
     }
 
@@ -52,10 +54,11 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'category.show', methods: ['GET'])]
-    public function show(Category $category): Response
+    public function show(Category $category, EquipmentRepository $equipmentRepository): Response
     {
         return $this->render('category/show.html.twig', [
             'category' => $category,
+            'equipmentRepository' => $equipmentRepository,
         ]);
     }
 

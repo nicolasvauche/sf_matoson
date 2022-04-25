@@ -46,6 +46,9 @@
                 font-size: 0.9rem;
                 text-align: left;
                 border: 1rem solid $color-fourth;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
 
                 @include respond(sm) {
                     display: inline-block;
@@ -54,6 +57,18 @@
 
                 &:nth-of-type(1) {
                     border-color: rgba($color-third, 0.5);
+                }
+
+                small {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+
+                    a {
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
                 }
             }
         }

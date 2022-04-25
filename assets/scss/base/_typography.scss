@@ -45,7 +45,7 @@ h2 {
             }
 
             &.fa-copy {
-                color: $color-fifth
+                color: $color-orange;
             }
 
             &.fa-trash {
@@ -78,7 +78,7 @@ p {
 }
 
 small {
-    font-size: 0.8rem;
+    font-size: 0.8em !important;
 }
 
 strong {
@@ -93,4 +93,12 @@ a {
 
 .mb-0 {
     margin-bottom: 0 !important;
+}
+
+.warning {
+    color: $color-orange !important;
+}
+
+.danger {
+    color: $color-red !important;
 }

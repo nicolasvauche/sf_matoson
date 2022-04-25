@@ -26,13 +26,21 @@
 
             <h3>{{ category.name }}</h3>
 
-            <p>{{ category.equipment | length }} matos</p>
-
-            {% if category.equipment | length > 0 %}
-                <hr />
-
-                {% include 'equipment/_grid.html.twig' with {'equipments': category.equipment} %}
-            {% endif %}
+            <p>{{ equipmentRepository.findByCategory(category.slug) | length }} matos</p>
         </div>
     </section>
+
+    {% if equipmentRepository.findByCategory(category.slug) | length > 0 %}
+        <section>
+            <h2>Dans l'armoire :</h2>
+            {% include 'equipment/_grid.html.twig' with {'equipments': equipmentRepository.findByCategory(category.slug)} %}
+        </section>
+    {% endif %}
+
+    {% if equipmentRepository.findByCategory(category.slug, 'a-prevoir') | length > 0 %}
+        <section>
+            <h2>À prévoir :</h2>
+            {% include 'equipment/_grid.html.twig' with {'equipments': equipmentRepository.findByCategory(category.slug, 'a-prevoir')} %}
+        </section>
+    {% endif %}
 {% endblock %}

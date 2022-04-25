@@ -46,6 +46,21 @@ class EquipmentRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByCategory($category, $health = 'bon-etat')
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('c.slug = :val')
+            ->setParameter('val', $category)
+            ->andWhere('h.slug = :val2')
+            ->setParameter('val2', $health)
+            ->leftJoin('e.health', 'h')
+            ->leftJoin('e.category', 'c')
+            ->addOrderBy('c.name', 'ASC')
+            ->addOrderBy('e.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function findByHealth($health)
     {
         return $this->createQueryBuilder('e')

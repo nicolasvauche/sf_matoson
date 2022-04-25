@@ -11,9 +11,19 @@
                     <h3 class="grid-item-title">
                         {{ category.name }}
                     </h3>
-                    <p class="grid-item-textinfo">
-                        {{ category.equipment | length }} matos
+                    <p class="grid-item-textinfo mb-0">
+                        {{ equipmentRepository.findByCategory(category.slug) | length }} matos
                     </p>
+                    {% if equipmentRepository.findByCategory(category.slug, 'abime') | length > 0 %}
+                        <p class="grid-item-textinfo danger">
+                            <small>{{ equipmentRepository.findByCategory(category.slug, 'abime') | length }} HS</small>
+                        </p>
+                    {% endif %}
+                    {% if equipmentRepository.findByCategory(category.slug, 'a-prevoir') | length > 0 %}
+                        <p class="grid-item-textinfo warning">
+                            <small>{{ equipmentRepository.findByCategory(category.slug, 'a-prevoir') | length }} à prévoir</small>
+                        </p>
+                    {% endif %}
                 </a>
             </div>
             <div class="grid-item-actions">
