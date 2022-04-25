@@ -23,6 +23,18 @@
                 margin-bottom: 1.5rem;
                 height: 175px;
             }
+
+            blockquote {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+                text-align: left;
+                border: 1rem solid rgba($color-fourth, 1);
+
+                @include respond(sm) {
+                    display: inline-block;
+                    padding: 2rem;
+                }
+            }
         }
     }
 }

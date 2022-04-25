@@ -12,6 +12,7 @@
             <a href="{{ path('equipment.edit', {'slug': equipment.slug}) }}">
                 <i class="fas fa-edit"></i>
             </a>
+            {{ include('equipment/_duplicate_form.html.twig') }}
             {{ include('equipment/_delete_form.html.twig') }}
         </h2>
 
@@ -26,7 +27,9 @@
 
             <p>{{ equipment.category.name }}</p>
 
-            <p>{{ equipment.description }}</p>
+            {% if equipment.description %}
+                <blockquote>{{ equipment.description | nl2br }}</blockquote>
+            {% endif %}
 
             <hr />
 

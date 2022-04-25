@@ -21,7 +21,7 @@ class EquipmentController extends AbstractController
     public function index(EquipmentRepository $equipmentRepository): Response
     {
         return $this->render('equipment/index.html.twig', [
-            'equipments' => $equipmentRepository->findAll(),
+            'equipments' => $equipmentRepository->findBy([], ['category' => 'ASC', 'name' => 'asc']),
         ]);
     }
 
@@ -99,12 +99,27 @@ class EquipmentController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'equipment.delete', methods: ['POST'])]
+    #[Route('/supprimer/{id}', name: 'equipment.delete', methods: ['POST'])]
     public function delete(Request $request, Equipment $equipment, EquipmentRepository $equipmentRepository, FileUploader $fileUploader): Response
     {
         if ($this->isCsrfTokenValid('delete' . $equipment->getId(), $request->request->get('_token'))) {
-            $fileUploader->delete($this->getParameter('images_category'), $equipment->getImage());
+            $isThereOthers = $equipmentRepository->findBy(['image' => $equipment->getImage()]);
+            if (!$isThereOthers) {
+                $fileUploader->delete($this->getParameter('images_equipment'), $equipment->getImage());
+            }
             $equipmentRepository->remove($equipment);
+        }
+
+        return $this->redirectToRoute('equipment', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/dupliquer/{id}', name: 'equipment.duplicate', methods: ['POST'])]
+    public function duplicate(Request $request, Equipment $equipment, EquipmentRepository $equipmentRepository, FileUploader $fileUploader): Response
+    {
+        if ($this->isCsrfTokenValid('duplicate' . $equipment->getId(), $request->request->get('_token'))) {
+            //$fileUploader->delete($this->getParameter('images_category'), $equipment->getImage());
+            $copy = clone $equipment;
+            $equipmentRepository->add($copy);
         }
 
         return $this->redirectToRoute('equipment', [], Response::HTTP_SEE_OTHER);

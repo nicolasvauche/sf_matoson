@@ -21,6 +21,7 @@
                 <a href="{{ path('equipment.edit', {'slug': equipment.slug}) }}">
                     <i class="fas fa-edit"></i>
                 </a>
+                {{ include('equipment/_duplicate_form.html.twig') }}
                 {{ include('equipment/_delete_form.html.twig') }}
             </div>
         </div>

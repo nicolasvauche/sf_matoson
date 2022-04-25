@@ -31,14 +31,6 @@ h2 {
         color: inherit;
         cursor: pointer;
 
-        &:first-child {
-            margin-left: 0;
-        }
-
-        &:last-child {
-            margin-right: 0;
-        }
-
         i {
             font-size: 1.25rem;
 
@@ -50,6 +42,10 @@ h2 {
             &.fa-edit,
             &.fa-eye {
                 color: $color-secondary;
+            }
+
+            &.fa-copy {
+                color: $color-fifth
             }
 
             &.fa-trash {

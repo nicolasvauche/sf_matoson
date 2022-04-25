@@ -12,9 +12,17 @@ class EquipmentFixtures extends Fixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $equipment = new Equipment();
+        $equipment->setName('Soundcraft EFX12')
+            ->setImage('soundcraft-efx12.webp')
+            ->setDescription('Console de mixage analogique : - 12 préamplis - 2 Line In - 1 Master Out - 1 Aux - 1 FX')
+            ->setCategory($this->getReference('categoryConsoles'))
+            ->setHealth($this->getReference('healthBon'));
+        $manager->persist($equipment);
+
+        $equipment = new Equipment();
         $equipment->setName('Shure SM57')
             ->setImage('shure-sm57.webp')
-            ->setDescription('Micro instrument polyvalent - Pince - Adaptateur de réduction de pas de vis 3/8" - Trousse de rangement')
+            ->setDescription('Micro instrument polyvalent avec : - Pince - Adaptateur de réduction de pas de vis 3/8" - Trousse de rangement')
             ->setCategory($this->getReference('categoryMicros'))
             ->setHealth($this->getReference('healthPrevoir'));
         $manager->persist($equipment);
@@ -22,7 +30,7 @@ class EquipmentFixtures extends Fixture implements OrderedFixtureInterface
         $equipment = new Equipment();
         $equipment->setName('Shure SM58')
             ->setImage('shure-sm58.webp')
-            ->setDescription('Micro chant - Pince - Adaptateur de réduction de pas de vis 3/8" - Trousse de rangement')
+            ->setDescription('Micro chant avec : - Pince - Adaptateur de réduction de pas de vis 3/8" - Trousse de rangement')
             ->setCategory($this->getReference('categoryMicros'))
             ->setHealth($this->getReference('healthPrevoir'));
         $manager->persist($equipment);
@@ -51,7 +59,7 @@ class EquipmentFixtures extends Fixture implements OrderedFixtureInterface
         $equipment = new Equipment();
         $equipment->setName('Behringer FBQ6200HD')
             ->setImage('behringer-fbq6200hd.webp')
-            ->setCategory($this->getReference('categoryMicros'))
+            ->setCategory($this->getReference('categoryEffets'))
             ->setHealth($this->getReference('healthPrevoir'));
         $manager->persist($equipment);
 
