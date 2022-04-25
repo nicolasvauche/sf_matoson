@@ -9,7 +9,7 @@
                 <i class="fas fa-arrow-circle-left"></i>
             </a>
             <span>Fiche Matos</span>
-            <a href="{{ path('equipment.edit', {'slug': equipment.slug}) }}">
+            <a href="{{ path('equipment.edit', {'id': equipment.id, 'slug': equipment.slug}) }}">
                 <i class="fas fa-edit"></i>
             </a>
             {{ include('equipment/_duplicate_form.html.twig') }}

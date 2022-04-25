@@ -56,7 +56,7 @@ class EquipmentController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}', name: 'equipment.show', methods: ['GET'])]
+    #[Route('/{id}-{slug}', name: 'equipment.show', methods: ['GET'])]
     public function show(Equipment $equipment): Response
     {
         return $this->render('equipment/show.html.twig', [
@@ -64,7 +64,7 @@ class EquipmentController extends AbstractController
         ]);
     }
 
-    #[Route('/modifier/{slug}', name: 'equipment.edit', methods: ['GET', 'POST'])]
+    #[Route('/modifier/{id}-{slug}', name: 'equipment.edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Equipment $equipment, EquipmentRepository $equipmentRepository, SluggerInterface $slugger, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(EquipmentType::class, $equipment);
@@ -90,7 +90,7 @@ class EquipmentController extends AbstractController
                 $equipment->setBill($fileName);
             }
             $equipmentRepository->add($equipment);
-            return $this->redirectToRoute('equipment', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('equipment.show', ['id' => $equipment->getId(), 'slug' => $equipment->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('equipment/edit.html.twig', [

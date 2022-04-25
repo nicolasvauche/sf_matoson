@@ -42,7 +42,7 @@ class CategoryController extends AbstractController
                 $category->setImage($fileName);
             }
             $categoryRepository->add($category);
-            return $this->redirectToRoute('category.show', ['slug' => $slugger->slug($category->getName())], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('category', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('category/new.html.twig', [

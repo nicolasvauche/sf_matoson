@@ -1,19 +1,21 @@
 <div class="app-grid">
     {% for health in healths %}
         <div class="grid-item">
-            <a href="{{ path('health.show', {'slug': health.slug}) }}">
-                {% if health.image %}
-                    <img src="{{ asset('img/health/' ~ health.image) }}" class="grid-item-image" alt="{{ health.name }}">
-                {% else %}
-                    <img src="{{ asset('img/health/placeholder.png') }}" class="grid-item-image" alt="{{ health.name }}">
-                {% endif %}
-                <h3 class="grid-item-title">
-                    {{ health.name }}
-                </h3>
-                <p class="grid-item-textinfo">
-                    {{ health.equipment | length }} matos
-                </p>
-            </a>
+            <div class="grid-item-body">
+                <a href="{{ path('health.show', {'slug': health.slug}) }}">
+                    {% if health.image %}
+                        <img src="{{ asset('img/health/' ~ health.image) }}" class="grid-item-image" alt="{{ health.name }}">
+                    {% else %}
+                        <img src="{{ asset('img/health/placeholder.png') }}" class="grid-item-image" alt="{{ health.name }}">
+                    {% endif %}
+                    <h3 class="grid-item-title">
+                        {{ health.name }}
+                    </h3>
+                    <p class="grid-item-textinfo">
+                        {{ health.equipment | length }} matos
+                    </p>
+                </a>
+            </div>
             <div class="grid-item-actions">
                 <a href="{{ path('health.edit', {'slug': health.slug}) }}">
                     <i class="fas fa-edit"></i>

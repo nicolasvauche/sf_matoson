@@ -77,7 +77,7 @@ class HealthController extends AbstractController
                 $health->setImage($fileName);
             }
             $healthRepository->add($health);
-            return $this->redirectToRoute('health', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('health.show', ['slug' => $health->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('health/edit.html.twig', [

@@ -30,8 +30,14 @@ class CategoryFixtures extends Fixture implements OrderedFixtureInterface
         $this->setReference('categoryMicros', $category);
 
         $category = new Category();
-        $category->setName('Filtres & Effets')
-            ->setImage('filtres-effets.webp');
+        $category->setName('Amplis & Filtres')
+            ->setImage('amplis-filtres.webp');
+        $manager->persist($category);
+        $this->setReference('categoryAmplis', $category);
+
+        $category = new Category();
+        $category->setName('Effets')
+            ->setImage('effets.webp');
         $manager->persist($category);
         $this->setReference('categoryEffets', $category);
 

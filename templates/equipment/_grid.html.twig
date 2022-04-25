@@ -2,7 +2,7 @@
     {% for equipment in equipments %}
         <div class="grid-item">
             <div class="grid-item-body">
-                <a href="{{ path('equipment.show', {'slug': equipment.slug}) }}">
+                <a href="{{ path('equipment.show', {'id': equipment.id, 'slug': equipment.slug}) }}">
                     <img src="{{ asset('img/health/' ~ equipment.health.image) }}" class="app-icon" alt="{{ equipment.health.name }}" />
                     {% if equipment.image %}
                         <img src="{{ asset('img/equipment/' ~ equipment.image) }}" class="grid-item-image" alt="{{ equipment.name }}">
@@ -18,7 +18,7 @@
                 </a>
             </div>
             <div class="grid-item-actions">
-                <a href="{{ path('equipment.edit', {'slug': equipment.slug}) }}">
+                <a href="{{ path('equipment.edit', {'id': equipment.id, 'slug': equipment.slug}) }}">
                     <i class="fas fa-edit"></i>
                 </a>
                 {{ include('equipment/_duplicate_form.html.twig') }}
