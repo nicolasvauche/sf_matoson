@@ -52,6 +52,19 @@
                 <img src="{{ asset('img/health/' ~ equipment.health.image) }}" class="app-icon" alt="{{ equipment.health.name }}" />
                 {{ equipment.health.name }}
             </p>
+
+            {% if equipment.health.slug == 'a-prevoir' %}
+                <blockquote>
+                    <small>Prix de référence : {{ equipment.price | number_format(2, ',', ' ') }}€</small>
+                    <br />
+                    <small>
+                        Site du revendeur :
+                        <a href="{{ equipment.sellerUrl }}" target="_blank" rel="noopener noreferrer">
+                            {{ equipment.sellerUrl }}
+                        </a>
+                    </small>
+                </blockquote>
+            {% endif %}
         </div>
     </section>
 {% endblock %}

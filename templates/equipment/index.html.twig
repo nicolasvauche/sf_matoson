@@ -5,7 +5,7 @@
 {% block main %}
     <section>
         <h2>
-            <span>Tout le matos ({{ equipments | length }})</span>
+            <span>Tout votre matos ({{ equipmentsOwned | length }})</span>
             {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('equipment.new') }}">
                     <i class="fas fa-plus-circle"></i>
@@ -13,6 +13,32 @@
             {% endif %}
         </h2>
 
-        {% include 'equipment/_grid.html.twig' %}
+        {% include 'equipment/_grid.html.twig' with {'equipments': equipmentsOwned} %}
+    </section>
+
+    <section>
+        <h2>
+            <span>À réparer ({{ equipmentsUsed | length }})</span>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('equipment.new') }}">
+                    <i class="fas fa-plus-circle"></i>
+                </a>
+            {% endif %}
+        </h2>
+
+        {% include 'equipment/_grid.html.twig' with {'equipments': equipmentsUsed} %}
+    </section>
+
+    <section>
+        <h2>
+            <span>À prévoir ({{ equipmentsNeeded | length }})</span>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('equipment.new') }}">
+                    <i class="fas fa-plus-circle"></i>
+                </a>
+            {% endif %}
+        </h2>
+
+        {% include 'equipment/_grid.html.twig' with {'equipments': equipmentsNeeded} %}
     </section>
 {% endblock %}

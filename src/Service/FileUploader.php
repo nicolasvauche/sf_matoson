@@ -21,13 +21,15 @@ class FileUploader
         return $fileName;
     }
 
-    public function delete($targetDirectory, $filename)
+    public function delete($targetDirectory, $fileName)
     {
-        if (!empty($filename)) {
-            try {
-                unlink($targetDirectory . '/' . $filename);
-            } catch (FileException $e) {
-                // ... handle exception if something happens during file upload
+        if (!empty($fileName)) {
+            if (file_exists($targetDirectory . '/' . $fileName)) {
+                try {
+                    unlink($targetDirectory . '/' . $fileName);
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
             }
         }
     }

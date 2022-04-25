@@ -21,7 +21,9 @@ class EquipmentController extends AbstractController
     public function index(EquipmentRepository $equipmentRepository): Response
     {
         return $this->render('equipment/index.html.twig', [
-            'equipments' => $equipmentRepository->findBy([], ['category' => 'ASC', 'name' => 'asc']),
+            'equipmentsOwned' => $equipmentRepository->findByHealth('bon-etat'),
+            'equipmentsUsed' => $equipmentRepository->findByHealth('abime'),
+            'equipmentsNeeded' => $equipmentRepository->findByHealth('a-prevoir'),
         ]);
     }
 
@@ -84,9 +86,9 @@ class EquipmentController extends AbstractController
             $equipmentBillFile = $form->get('bill')->getData();
             if ($equipmentBillFile) {
                 if ($equipment->getBill()) {
-                    $fileUploader->delete($this->getParameter('images_equipment'), $equipment->getBill());
+                    $fileUploader->delete($this->getParameter('images_bill'), $equipment->getBill());
                 }
-                $fileName = $fileUploader->upload($equipmentBillFile, $this->getParameter('images_equipment'), $slugger->slug($equipment->getName()));
+                $fileName = $fileUploader->upload($equipmentBillFile, $this->getParameter('images_bill'), $slugger->slug($equipment->getName()));
                 $equipment->setBill($fileName);
             }
             $equipmentRepository->add($equipment);

@@ -41,6 +41,12 @@ class Equipment
     #[ORM\JoinColumn(nullable: false)]
     private $health;
 
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
+    private $price;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $sellerUrl;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +144,30 @@ class Equipment
     public function setHealth(?Health $health): self
     {
         $this->health = $health;
+
+        return $this;
+    }
+
+    public function getPrice(): ?string
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?string $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getSellerUrl(): ?string
+    {
+        return $this->sellerUrl;
+    }
+
+    public function setSellerUrl(?string $sellerUrl): self
+    {
+        $this->sellerUrl = $sellerUrl;
 
         return $this;
     }

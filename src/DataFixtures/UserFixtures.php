@@ -21,14 +21,14 @@ class UserFixtures extends Fixture implements OrderedFixtureInterface
     {
         $user = new User();
         $user->setName('Administrateur')
-            ->setEmail('admin@matoson.com')
+            ->setEmail('admin@matoson.fr')
             ->setRoles(['ROLE_ADMIN'])
             ->setPassword($this->hasher->hashPassword($user, 'admin'));
         $manager->persist($user);
 
         $user = new User();
         $user->setName('Utilisateur')
-            ->setEmail('user@matoson.com')
+            ->setEmail('user@matoson.fr')
             ->setRoles(['ROLE_USER'])
             ->setPassword($this->hasher->hashPassword($user, 'user'));
         $manager->persist($user);

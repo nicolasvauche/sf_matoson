@@ -26,7 +26,19 @@
 
             <h3>{{ health.name }}</h3>
 
-            <p>{{ health.equipment | length }} matos</p>
+            <p>
+                {{ health.equipment | length }} matos
+                {% if health.slug == "a-prevoir" %}
+                    {% set total = 0 %}
+                    {% for equipment in health.equipment %}
+                        {% if equipment.price %}
+                            {% set total = total + equipment.price %}
+                        {% endif %}
+                    {% endfor %}
+                    pour
+                    <strong>{{ total | number_format(2, ',', ' ') }}€</strong> d'investissement
+                {% endif %}
+            </p>
 
             {% if health.equipment | length > 0 %}
                 <hr />

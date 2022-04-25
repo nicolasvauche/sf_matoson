@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Equipment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -43,6 +44,19 @@ class EquipmentRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
+    }
+
+    public function findByHealth($health)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('h.slug = :val')
+            ->setParameter('val', $health)
+            ->leftJoin('e.health', 'h')
+            ->leftJoin('e.category', 'c')
+            ->addOrderBy('c.name', 'ASC')
+            ->addOrderBy('e.name', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 
     // /**
